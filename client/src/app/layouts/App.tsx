@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { House } from "./payloads/House";
+import { House } from "../models/House";
 
 function App() {
   const [houses, setHouses] = useState<House[]>([]);
