@@ -16,7 +16,7 @@ public class House
     public int BathroomsCount { get; set; }
     public int FloorsCount { get; set; }
     public long InitialPrice { get; set; }
-    public long Currency { get; set; }
+    public required string Currency { get; set; }
     public long Price { get; set; }
     public bool IsDetached { get; set; }
     public bool HasPool { get; set; }

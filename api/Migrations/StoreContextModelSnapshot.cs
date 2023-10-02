@@ -7,7 +7,7 @@ using api.Data;
 
 #nullable disable
 
-namespace api.Data.Migrations
+namespace api.Migrations
 {
     [DbContext(typeof(StoreContext))]
     partial class StoreContextModelSnapshot : ModelSnapshot
@@ -40,8 +40,9 @@ namespace api.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("Currency")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Currency")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
                         .IsRequired()

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace api.Data.Migrations
+namespace api.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
@@ -18,6 +18,7 @@ namespace api.Data.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
+                    CountryCode = table.Column<string>(type: "TEXT", nullable: false),
                     City = table.Column<string>(type: "TEXT", nullable: false),
                     Street = table.Column<string>(type: "TEXT", nullable: true),
                     StreetNumber = table.Column<int>(type: "INTEGER", nullable: true),
@@ -29,7 +30,7 @@ namespace api.Data.Migrations
                     BathroomsCount = table.Column<int>(type: "INTEGER", nullable: false),
                     FloorsCount = table.Column<int>(type: "INTEGER", nullable: false),
                     InitialPrice = table.Column<long>(type: "INTEGER", nullable: false),
-                    Currency = table.Column<long>(type: "INTEGER", nullable: false),
+                    Currency = table.Column<string>(type: "TEXT", nullable: false),
                     Price = table.Column<long>(type: "INTEGER", nullable: false),
                     IsDetached = table.Column<bool>(type: "INTEGER", nullable: false),
                     HasPool = table.Column<bool>(type: "INTEGER", nullable: false),
