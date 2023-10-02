@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
+import { House } from "./payloads/House";
 
 function App() {
-  const [houses, setHouses] = useState([]);
+  const [houses, setHouses] = useState<House[]>([]);
 
   useEffect(() => {
     fetch("http://localhost:5155/api/houses")
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data: House[]) => setHouses(data));
   }, []);
 
   return (
     <div>
       <h1>Estates</h1>
       <ul>
-        {houses.map((house: any) => (
-          <li>{house}</li>
+        {houses.map((house) => (
+          <li>{"Dům " + house.roomsCount + "-pokojový, " + house.city}</li>
         ))}
       </ul>
     </div>
