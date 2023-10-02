@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { House } from "../models/House";
 import { Catalog } from "../../features/catalog/Catalog";
+import { Typography } from "@mui/material";
 
 function App() {
   const [houses, setHouses] = useState<House[]>([]);
@@ -13,7 +14,7 @@ function App() {
 
   return (
     <div>
-      <h1>Estates</h1>
+      <Typography variant="h1">Estates</Typography>
       <Catalog houses={houses} />
     </div>
   );
