@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
 
 function App() {
+  const [houses, setHouses] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5155/api/houses")
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Estates</h1>
+      <ul>
+        {houses.map((house: any) => (
+          <li>{house}</li>
+        ))}
+      </ul>
     </div>
   );
 }
