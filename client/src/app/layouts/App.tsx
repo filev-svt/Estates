@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { House } from "../models/House";
+import { Catalog } from "../../features/catalog/Catalog";
 
 function App() {
   const [houses, setHouses] = useState<House[]>([]);
@@ -13,11 +14,7 @@ function App() {
   return (
     <div>
       <h1>Estates</h1>
-      <ul>
-        {houses.map((house) => (
-          <li>{"Dům " + house.roomsCount + "-pokojový, " + house.city}</li>
-        ))}
-      </ul>
+      <Catalog houses={houses} />
     </div>
   );
 }
