@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Card,
   CardActions,
@@ -12,8 +11,6 @@ import {
 } from "@mui/material";
 import { House } from "../../app/models/House";
 import { Garage, LocalParking, Pool, Stairs } from "@mui/icons-material";
-import { useState } from "react";
-import { useTheme } from "@emotion/react";
 
 interface Props {
   listing: House;
