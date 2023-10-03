@@ -1,4 +1,3 @@
-import { Catalog } from "../../features/catalog/Catalog";
 import {
   Container,
   CssBaseline,
