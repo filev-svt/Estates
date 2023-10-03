@@ -1,22 +1,37 @@
-import { useEffect, useState } from "react";
-import { House } from "../models/House";
 import { Catalog } from "../../features/catalog/Catalog";
-import { Typography } from "@mui/material";
+import {
+  Container,
+  CssBaseline,
+  PaletteMode,
+  ThemeProvider,
+  createTheme,
+} from "@mui/material";
+import { Header } from "./Header";
+import { useState } from "react";
 
 function App() {
-  const [houses, setHouses] = useState<House[]>([]);
+  const [paletteMode, setPaletteMode] = useState<PaletteMode>("light");
 
-  useEffect(() => {
-    fetch("http://localhost:5155/api/houses")
-      .then((res) => res.json())
-      .then((data: House[]) => setHouses(data));
-  }, []);
+  const theme = createTheme({
+    palette: {
+      mode: paletteMode,
+      background: { default: paletteMode === "light" ? "#eaeaea" : "#121212" },
+    },
+  });
 
   return (
-    <div>
-      <Typography variant="h1">Estates</Typography>
-      <Catalog houses={houses} />
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Header
+        paletteMode={paletteMode}
+        togglePaletteMode={() => {
+          setPaletteMode(paletteMode === "light" ? "dark" : "light");
+        }}
+      />
+      <Container>
+        <Catalog />
+      </Container>
+    </ThemeProvider>
   );
 }
 

@@ -1,4 +1,4 @@
-import { List } from "@mui/material";
+import { Grid } from "@mui/material";
 import { House } from "../../app/models/House";
 import { ListingCard } from "./ListingCard";
 
@@ -8,10 +8,12 @@ interface Props {
 
 export const ListingContainer = ({ listings }: Props) => {
   return (
-    <List>
+    <Grid container spacing={4}>
       {listings.map((listing) => (
-        <ListingCard key={listing.id} listing={listing} />
+        <Grid key={listing.id} item xs={12} md={6} lg={4}>
+          <ListingCard listing={listing} />
+        </Grid>
       ))}
-    </List>
+    </Grid>
   );
 };
