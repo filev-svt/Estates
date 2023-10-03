@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { Header } from "./Header";
 import { useState } from "react";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const [paletteMode, setPaletteMode] = useState<PaletteMode>("light");
@@ -29,7 +30,7 @@ function App() {
         }}
       />
       <Container>
-        <Catalog />
+        <Outlet />
       </Container>
     </ThemeProvider>
   );
