@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { House } from "../../app/models/House";
 import { ListingContainer } from "./ListingContainer";
 
-export const Catalog = () => {
+export const PropertyList = () => {
   const [listings, setListings] = useState<House[]>([]);
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../layouts/App";
 import { HomePage } from "../../features/home/HomePage";
-import { Catalog } from "../../features/catalog/Catalog";
+import { PropertyList } from "../../features/catalog/PropertyList";
 import { ListingDetail } from "../../features/catalog/ListingDetail";
 import { Contact } from "../../features/contact/Contact";
 
@@ -14,8 +14,8 @@ export const router = createBrowserRouter([
         path: "",
         element: <HomePage />,
       },
-      { path: "catalog", element: <Catalog /> },
-      { path: "catalog/:id", element: <ListingDetail /> },
+      { path: "properties", element: <PropertyList /> },
+      { path: "properties/:id", element: <ListingDetail /> },
       { path: "contact", element: <Contact /> },
     ],
   },
