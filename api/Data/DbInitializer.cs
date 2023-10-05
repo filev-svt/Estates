@@ -27,8 +27,8 @@ public static class DbInitializer
             .RuleFor(house => house.GarageSpacesCount, f => f.Random.Number(0, 2))
             .RuleFor(house => house.ParkingSpacesCount, f => f.Random.Number(0, 4))
             .RuleFor(house => house.LandArea, f => f.Random.Number(500, 3000))
-            .RuleFor(house => house.FloorArea, (f, house) => Math.Round(house.LandArea * 0.4))
-            .RuleFor(house => house.InternalArea, (f, house) => Math.Round(house.FloorArea * 0.95))
+            .RuleFor(house => house.FloorArea, (f, house) => (int)Math.Round(house.LandArea * 0.4))
+            .RuleFor(house => house.InternalArea, (f, house) => (int)Math.Round(house.FloorArea * 0.95))
 
             .RuleFor(house => house.Latitude, f => f.Address.Latitude())
             .RuleFor(house => house.Longitude, f => f.Address.Longitude())
@@ -37,7 +37,7 @@ public static class DbInitializer
             {
                 if (f.Random.Bool())
                 {
-                    return house.InitialPrice * 0.8;
+                    return (long)Math.Round(house.InitialPrice * 0.8);
                 }
 
                 return house.InitialPrice;
@@ -46,7 +46,7 @@ public static class DbInitializer
             {
                 if (f.Random.Bool())
                 {
-                    return (long)(house.InitialPrice * 0.05);
+                    return (long)Math.Round(house.InitialPrice * 0.05);
                 }
 
                 return null;
