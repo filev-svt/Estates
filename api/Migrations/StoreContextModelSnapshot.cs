@@ -33,6 +33,9 @@ namespace api.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<long?>("Commission")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("CountryCode")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -48,34 +51,58 @@ namespace api.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<byte>("EpcRating")
+                    b.Property<byte?>("EpcRating")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("FloorArea")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("FloorsCount")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Footage")
+                    b.Property<int>("GarageSpacesCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("HasAirConditioning")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("HasBalcony")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("HasBasement")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("HasGarage")
+                    b.Property<bool>("HasDishwasher")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("HasParking")
+                    b.Property<bool>("HasFurniture")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("HasOven")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("HasPool")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("HasRefrigerator")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("HasTerrace")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("HasWashingMachine")
+                        .HasColumnType("INTEGER");
+
                     b.Property<long>("InitialPrice")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("InternalArea")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsDetached")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("LandFootage")
+                    b.Property<int>("LandArea")
                         .HasColumnType("INTEGER");
 
                     b.Property<double?>("Latitude")
@@ -83,6 +110,9 @@ namespace api.Migrations
 
                     b.Property<double?>("Longitude")
                         .HasColumnType("REAL");
+
+                    b.Property<int>("ParkingSpacesCount")
+                        .HasColumnType("INTEGER");
 
                     b.Property<long>("Price")
                         .HasColumnType("INTEGER");
@@ -100,6 +130,9 @@ namespace api.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("StreetNumber")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("YearBuilt")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
