@@ -10,7 +10,7 @@ export const ListingContainer = ({ listings }: Props) => {
   return (
     <Grid container spacing={4}>
       {listings.map((listing) => (
-        <Grid key={listing.id} item xs={12} md={6} lg={4}>
+        <Grid key={listing.id} item xs={12}>
           <ListingCard listing={listing} />
         </Grid>
       ))}
