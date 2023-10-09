@@ -19,7 +19,6 @@ import {
   AspectRatio,
   Bathroom,
   Bed,
-  DoorFront,
   EnergySavingsLeaf,
   Garage,
   LocalParking,
