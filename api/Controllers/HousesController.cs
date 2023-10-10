@@ -5,9 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Controllers;
 
-[ApiController]
-[Route("api/[controller]")]
-public class HousesController : ControllerBase
+public class HousesController : BaseApiController
 {
     private readonly StoreContext _context;
     public HousesController(StoreContext context)
