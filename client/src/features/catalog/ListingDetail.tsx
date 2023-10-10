@@ -13,6 +13,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { House } from "../../app/models/House";
+import agent from "../../app/api/agent";
 
 export const ListingDetail = () => {
   const { propertyId } = useParams<{ propertyId: string }>();
@@ -22,18 +23,15 @@ export const ListingDetail = () => {
 
   useEffect(() => {
     setLoading(true);
-
-    axios
-      .get(`http://localhost:5155/api/houses/${propertyId}`)
-      .then(({ data }) => {
-        setProperty(data);
-      })
-      .catch((error) => {
-        alert(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    propertyId &&
+      agent.Houses.details(parseInt(propertyId))
+        .then((response) => setProperty(response))
+        .catch((error) => {
+          alert(error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
   }, [propertyId]);
 
   if (loading) {
