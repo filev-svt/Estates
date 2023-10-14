@@ -1,7 +1,6 @@
 import {
   Divider,
   Grid,
-  Skeleton,
   Table,
   TableBody,
   TableCell,
@@ -9,11 +8,12 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { House } from "../../app/models/House";
 import agent from "../../app/api/agent";
+import { NotFound } from "../../app/errors/NotFound";
+import { Loader } from "../../app/layout/Loader";
 
 export const ListingDetail = () => {
   const { propertyId } = useParams<{ propertyId: string }>();
@@ -23,6 +23,7 @@ export const ListingDetail = () => {
 
   useEffect(() => {
     setLoading(true);
+
     propertyId &&
       agent.Houses.details(parseInt(propertyId))
         .then((response) => setProperty(response))
@@ -35,11 +36,11 @@ export const ListingDetail = () => {
   }, [propertyId]);
 
   if (loading) {
-    return <Skeleton />;
+    return <Loader />;
   }
 
   if (!property) {
-    return <h3>Property not found</h3>;
+    return <NotFound />;
   }
 
   const title = property.roomsCount + "-pokojový dům, " + property.city;

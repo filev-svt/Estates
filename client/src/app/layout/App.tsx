@@ -8,6 +8,8 @@ import {
 import { Header } from "./Header";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [paletteMode, setPaletteMode] = useState<PaletteMode>("light");
@@ -21,6 +23,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <ToastContainer position="top-left" hideProgressBar theme="colored" />
       <CssBaseline />
       <Header
         paletteMode={paletteMode}

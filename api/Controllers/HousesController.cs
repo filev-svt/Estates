@@ -22,6 +22,14 @@ public class HousesController : BaseApiController
     [HttpGet("{id}")]
     public async Task<ActionResult<House?>> GetHouse(int id)
     {
-        return await _context.Houses.FindAsync(id);
+        var house = await _context.Houses.FindAsync(id);
+
+        if (house == null)
+        {
+            return NotFound();
+
+        }
+
+        return house;
     }
 }
