@@ -56,7 +56,7 @@ const requests = {
   delete: (url: string) => axios.delete(url).then(responseBody),
 };
 
-const Houses = {
+const Products = {
   list: () => requests.get("/products"),
   details: (id: number) => requests.get(`/products/${id}`),
 };
@@ -70,7 +70,7 @@ const TestErrors = {
 };
 
 const agent = {
-  Houses,
+  Products,
   TestErrors,
 };
 

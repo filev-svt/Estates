@@ -14,10 +14,12 @@ import {
 import { NavLink } from "react-router-dom";
 
 const midLinks = [
+  { title: "Galerie", path: "/gallery" },
   {
-    title: "Nemovitosti",
-    path: "/properties",
+    title: "Merch",
+    path: "/catalog",
   },
+  { title: "O mně", path: "/about" },
   {
     title: "Kontakt",
     path: "/contact",
