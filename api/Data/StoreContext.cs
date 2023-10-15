@@ -5,7 +5,7 @@ namespace api.Data;
 
 public class StoreContext : DbContext
 {
-    public DbSet<House> Houses { get; set; }
+    public DbSet<Product> Products { get; set; }
 
     public StoreContext(DbContextOptions options) : base(options)
     {

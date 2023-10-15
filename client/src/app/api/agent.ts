@@ -57,8 +57,8 @@ const requests = {
 };
 
 const Houses = {
-  list: () => requests.get("/houses"),
-  details: (id: number) => requests.get(`/houses/${id}`),
+  list: () => requests.get("/products"),
+  details: (id: number) => requests.get(`/products/${id}`),
 };
 
 const TestErrors = {
