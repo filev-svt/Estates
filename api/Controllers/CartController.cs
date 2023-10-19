@@ -15,28 +15,16 @@ public class CartController : BaseApiController
         _context = context;
     }
 
-    [HttpGet]
+    [HttpGet(Name = "GetCart")]
     public async Task<ActionResult<CartDto>> GetCart()
     {
         var cart = await RetrieveCart();
 
-        return cart == null ? NotFound() : Ok(new CartDto
-        {
-            Id = cart.Id,
-            BuyerId = cart.BuyerId,
-            Items = cart.CartItems.Select(item => new CartItemDto
-            {
-                ProductId = item.ProductId,
-                ProductName = item.Product.Name,
-                Price = item.Product.Price,
-                Image = item.Product.Image,
-                Quantity = item.Quantity
-            }).ToList()
-        });
+        return cart == null ? base.NotFound() : base.Ok(MapCartToDto(cart));
     }
 
     [HttpPost]
-    public async Task<ActionResult> AddItemToCart(int productId, int quantity)
+    public async Task<ActionResult<CartDto>> AddItemToCart(int productId, int quantity)
     {
         var cart = await RetrieveCart();
 
@@ -56,10 +44,8 @@ public class CartController : BaseApiController
             return BadRequest(new ProblemDetails { Title = "Problem adding item to cart" });
         }
 
-        return StatusCode(201);
+        return CreatedAtRoute("GetCart", MapCartToDto(cart));
     }
-
-
 
     [HttpDelete]
     public async Task<ActionResult> RemoveItemFromCart(int productId, int quantity)
@@ -104,5 +90,22 @@ public class CartController : BaseApiController
         _context.Carts.Add(cart);
 
         return cart;
+    }
+
+    private static CartDto MapCartToDto(Cart cart)
+    {
+        return new CartDto
+        {
+            Id = cart.Id,
+            BuyerId = cart.BuyerId,
+            Items = cart.CartItems.Select(item => new CartItemDto
+            {
+                ProductId = item.ProductId,
+                ProductName = item.Product.Name,
+                Price = item.Product.Price,
+                Image = item.Product.Image,
+                Quantity = item.Quantity
+            }).ToList()
+        };
     }
 }
