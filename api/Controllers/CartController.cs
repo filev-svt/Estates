@@ -71,7 +71,8 @@ public class CartController : BaseApiController
     {
         return await _context.Carts
             .Include(cart => cart.CartItems)
-            .ThenInclude(item => item.Product)
+            .ThenInclude(item => item.ProductVariant)
+            .ThenInclude(variant => variant.Product)
             .FirstOrDefaultAsync(cart => cart.BuyerId == Request.Cookies["buyerId"]);
     }
 
@@ -100,10 +101,10 @@ public class CartController : BaseApiController
             BuyerId = cart.BuyerId,
             Items = cart.CartItems.Select(item => new CartItemDto
             {
-                ProductId = item.ProductId,
-                ProductName = item.Product.Name,
-                Price = item.Product.Price,
-                Image = item.Product.Image,
+                ProductVariantId = item.ProductVariantId,
+                ProductName = item.ProductVariant.Product.Name,
+                Price = item.ProductVariant.Price,
+                Image = item.ProductVariant.Product.Image,
                 Quantity = item.Quantity
             }).ToList()
         };

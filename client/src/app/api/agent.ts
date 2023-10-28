@@ -69,9 +69,12 @@ const TestErrors = {
   get422: () => requests.get("/buggy/validation-error"),
 };
 
+const Cart = {};
+
 const agent = {
   Products,
   TestErrors,
+  Cart,
 };
 
 export default agent;
